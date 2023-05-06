@@ -1,5 +1,6 @@
 package qa_bible;
 
+import constant.URL;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,7 +10,7 @@ import org.testng.annotations.BeforeMethod;
 
 import java.util.concurrent.TimeUnit;
 
-import static qa_bible.URL.URL_BASE;
+
 
 public class BaseSetBrowsers {
 
@@ -25,6 +26,7 @@ public class BaseSetBrowsers {
         String browser = System.getProperty("browser", CHROME_BROWSER);
         switch (browser) {
             case CHROME_BROWSER:
+                System.setProperty("webdriver.chrome.driver", null);
                 driver = new ChromeDriver();
                 break;
             case YANDEX_BROWSER:
@@ -39,11 +41,12 @@ public class BaseSetBrowsers {
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get(URL_BASE);
+        driver.get(URL.URL_BASE);
     }
 
     @AfterMethod
     public void tearDown() {
+        driver.close();
         if (driver != null) {
             driver.quit();
         }
