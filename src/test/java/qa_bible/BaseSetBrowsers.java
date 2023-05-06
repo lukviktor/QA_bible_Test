@@ -6,12 +6,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+
 import java.util.concurrent.TimeUnit;
+
+import static qa_bible.URL.URL_BASE;
 
 public class BaseSetBrowsers {
 
     protected WebDriver driver;
-    private static final String URL_BASE = "https://vladislaveremeev.gitbook.io/qa_bible/";
     private static final String YANDEX_BROWSER = "yandex";
     private static final String CHROME_BROWSER = "chrome";
     private static final String PATH_TO_YANDEX_DRIVER = "src/main/resources/yandex/chromedriver.exe";
@@ -42,6 +44,8 @@ public class BaseSetBrowsers {
 
     @AfterMethod
     public void tearDown() {
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }
