@@ -8,6 +8,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.opera.OperaDriver;
 import org.testng.Assert;
 
@@ -21,9 +23,14 @@ public class TestBaseOpera {
     public void setUp() {
         WebDriverManager.operadriver().setup();
         // Установка пути к драйверу оперы
+        // Драйвер скачать с:
+        // https://github.com/operasoftware/operachromiumdriver/releases
         System.setProperty("webdriver.opera.driver", PathBrowserDriver.PATH_TO_OPERA);
         // Инициализация драйвера оперы
-        driver = new OperaDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.setBinary(PathBrowserDriver.BINARY_PATH_OPERA);
+        driver = new ChromeDriver(options);
+        //driver = new OperaDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
