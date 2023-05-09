@@ -35,7 +35,7 @@ public class TestBaseEdge {
     }
 
     @Test
-    public void testQABibleImageDisplayed() {
+    public void test() {
         final By imgQABible = By.xpath("//img[@class='r-z2wwpe r-dnmrzs']");
         Assert.assertTrue(driver.findElement(imgQABible).isDisplayed());
     }

@@ -8,11 +8,9 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 
 import java.util.concurrent.TimeUnit;
-
 
 public class TestBaseGoogleChrome {
     WebDriver driver;
@@ -36,7 +34,7 @@ public class TestBaseGoogleChrome {
     }
 
     @Test
-    public void testQABibleImageDisplayed() {
+    public void test() {
         final By imgQABible = By.xpath("//img[@class='r-z2wwpe r-dnmrzs']");
         Assert.assertTrue(driver.findElement(imgQABible).isDisplayed());
     }

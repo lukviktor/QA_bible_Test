@@ -32,10 +32,6 @@ public class TestBaseYandexBrowser {
     }
 
     private final By imgQABible = By.xpath("//img[@class='r-z2wwpe r-dnmrzs']");
-    @Test
-    public void testQABibleImageDisplayed() {
-        Assert.assertTrue(driver.findElement(imgQABible).isDisplayed());
-    }
 
     @AfterEach
     public void tearDown() {
@@ -43,5 +39,11 @@ public class TestBaseYandexBrowser {
         if (driver != null) {
             driver.quit();
         }
+    }
+
+    @Test
+    public void test() {
+        final By imgQABible = By.xpath("//img[@class='r-z2wwpe r-dnmrzs']");
+        Assert.assertTrue(driver.findElement(imgQABible).isDisplayed());
     }
 }
