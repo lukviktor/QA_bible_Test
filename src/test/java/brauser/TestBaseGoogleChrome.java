@@ -1,22 +1,26 @@
-package googlechrome;
-
+package brauser;
 
 import constant.URL;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 
 import java.util.concurrent.TimeUnit;
 
-public class TestBaseChrome {
-    protected WebDriver driver;
+
+public class TestBaseGoogleChrome {
+    WebDriver driver;
 
     @BeforeEach
-    public void setUpTest() {
+    public void setUp() {
         WebDriverManager.chromedriver().setup();
+        // Установить путь к Chromedriver
+        //System.setProperty("webdriver.chrome.driver", PathBrowserDriver.PATH_TO_CHROME_DRIVER);
         driver = new ChromeDriver();
 
         driver.manage().window().maximize();
@@ -26,10 +30,14 @@ public class TestBaseChrome {
     }
 
     @AfterEach
-    public void tearDownTest() {
+    public void tearDown() {
         driver.close();
-        if (driver != null) {
-            driver.quit();
-        }
+        driver.quit();
+    }
+
+    @Test
+    public void testQABibleImageDisplayed() {
+        final By imgQABible = By.xpath("//img[@class='r-z2wwpe r-dnmrzs']");
+        Assert.assertTrue(driver.findElement(imgQABible).isDisplayed());
     }
 }
