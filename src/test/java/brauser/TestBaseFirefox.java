@@ -19,7 +19,6 @@ public class TestBaseFirefox {
     public void setUp() {
         // Загрузка драйвера для Firefox
         WebDriverManager.firefoxdriver().setup();
-
         // Создание экземпляра браузера Firefox
         WebDriver driver = new FirefoxDriver();
 
