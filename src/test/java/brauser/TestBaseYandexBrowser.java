@@ -43,6 +43,8 @@ public class TestBaseYandexBrowser {
     @AfterEach
     public void tearDown() {
         driver.close();
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }
