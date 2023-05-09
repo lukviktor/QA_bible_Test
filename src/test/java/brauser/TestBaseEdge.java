@@ -7,28 +7,19 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.Assert;
 
 import java.util.concurrent.TimeUnit;
 
-public class TestBaseFirefox {
+
+public class TestBaseEdge {
     WebDriver driver;
 
     @BeforeEach
     public void setUp() {
-
-        // Загрузка драйвера для Firefox
-        WebDriverManager.firefoxdriver().setup();
-
-        // Создание опций браузера Firefox
-        FirefoxOptions firefoxOptions = new FirefoxOptions();
-        firefoxOptions.setHeadless(false); // Установка headless режима
-
-        // Создание экземпляра браузера Firefox
-        WebDriver driver = new FirefoxDriver(firefoxOptions);
-
+        WebDriverManager.edgedriver().setup();
+        driver = new EdgeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
