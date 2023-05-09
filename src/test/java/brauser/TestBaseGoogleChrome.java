@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 
 import java.util.concurrent.TimeUnit;
@@ -19,10 +20,7 @@ public class TestBaseGoogleChrome {
     @BeforeEach
     public void setUp() {
         WebDriverManager.chromedriver().setup();
-        // Установить путь к Chromedriver
-        //System.setProperty("webdriver.chrome.driver", PathBrowserDriver.PATH_TO_CHROME_DRIVER);
         driver = new ChromeDriver();
-
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);

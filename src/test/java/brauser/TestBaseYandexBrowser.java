@@ -37,9 +37,6 @@ public class TestBaseYandexBrowser {
         Assert.assertTrue(driver.findElement(imgQABible).isDisplayed());
     }
 
-
-
-
     @AfterEach
     public void tearDown() {
         driver.close();

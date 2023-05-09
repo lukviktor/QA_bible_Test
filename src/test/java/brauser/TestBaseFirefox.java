@@ -1,6 +1,5 @@
 package brauser;
 
-import constant.PathBrowserDriver;
 import constant.URL;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
@@ -10,8 +9,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 
 import java.util.concurrent.TimeUnit;
@@ -22,21 +19,19 @@ public class TestBaseFirefox {
     @BeforeEach
     public void setUp() {
 
-//        WebDriverManager.firefoxdriver().setup();
-//        driver = new FirefoxDriver();
+        // Загрузка драйвера для Firefox
+        WebDriverManager.firefoxdriver().setup();
 
-//        FirefoxProfile profile = new FirefoxProfile();
-//        FirefoxOptions options = new FirefoxOptions();
-//        options.setProfile(profile);
-//        driver = new RemoteWebDriver(options);
+        // Создание опций браузера Firefox
+        FirefoxOptions firefoxOptions = new FirefoxOptions();
+        firefoxOptions.setHeadless(false); // Установка headless режима
 
-
-//        //System.setProperty("webdriver.gecko.driver", PathBrowserDriver.PATH_TO_GECKODRIVER);
-//        driver = new FirefoxDriver();
+        // Создание экземпляра браузера Firefox
+        WebDriver driver = new FirefoxDriver(firefoxOptions);
 
         driver.manage().window().maximize();
-        driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         driver.get(URL.URL_BASE);
     }
 
