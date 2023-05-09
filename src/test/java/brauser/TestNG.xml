@@ -1,0 +1,27 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="My suite">
+    <test name="My test">
+        <parameter name="browserType" value="chrome"/>
+        <classes>
+            <class name="brauser.BaseTest"/>
+        </classes>
+    </test>
+    <test name="My test 2">
+        <parameter name="browserType" value="firefox"/>
+        <classes>
+            <class name="brauser.BaseTest"/>
+        </classes>
+    </test>
+    <test name="My test 3">
+        <parameter name="browserType" value="edge"/>
+        <classes>
+            <class name="brauser.BaseTest"/>
+        </classes>
+    </test>
+    <test name="My test 4">
+        <parameter name="browserType" value="yandex"/>
+        <classes>
+            <class name="brauser.BaseTest"/>
+        </classes>
+    </test>
+</suite>
